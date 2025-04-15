@@ -115,8 +115,8 @@ if __name__ == "__main__":
 
     uvicorn.run(
         api.app,
-        host=host,
-        port=int(port),
+        host="0.0.0.0",
+        port=int(8080),
         workers=api.args.workers,
         log_level="info",
     )
