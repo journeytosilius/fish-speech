@@ -8,4 +8,4 @@ if [ "${CUDA_ENABLED}" != "true" ]; then
 fi
 
 # Launch FastAPI server with Uvicorn
-exec uvicorn tools.custom_api.endpoints:app --host 0.0.0.0 --port 8000 ${DEVICE}
+exec uvicorn tools.custom_api.endpoints:app --host 0.0.0.0 --port 8080 ${DEVICE}

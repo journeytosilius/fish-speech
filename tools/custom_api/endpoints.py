@@ -8,6 +8,7 @@ class InferenceRequest(BaseModel):
     audio_input_path: str
     fake_file_path: str
 
+#this endpoint generates the LORA for a speaker. Point it to a wav file with rich audio, of a minute duration at least and generate the .npy file
 @app.post("/run-vqgan")
 def run_vqgan(request: InferenceRequest):
     try:
@@ -43,9 +44,9 @@ def run_vqgan(request: InferenceRequest):
             "status": "error",
             "message": str(e)
         }
-# curl -X POST http://localhost:8000/run-vqgan \
+# curl -X POST http://localhost:8080/run-vqgan \
 #   -H "Content-Type: application/json" \
 #   -d '{
 #     "audio_input_path": "/opt/fish-speech/assets/adeline_speech_full.wav",
-#     "fake_file_path": "/opt/fish-speech/results/adeline.npy"
+#     "fake_file_path": "/opt/fish-speech/assets/adeline.npy"
 # }'
