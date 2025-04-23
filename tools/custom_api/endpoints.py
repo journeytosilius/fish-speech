@@ -56,6 +56,8 @@ class SemanticTokenRequest(BaseModel):
     speaker_name: str
     text_input: str
     narration_id: str  # Unique ID for the narration
+    temperature: float
+    
 
 @app.post("/generate-semantic-tokens")
 def generate_semantic_tokens(request: SemanticTokenRequest):
@@ -63,6 +65,7 @@ def generate_semantic_tokens(request: SemanticTokenRequest):
         speaker_name = request.speaker_name
         text_input = request.text_input
         narration_id = request.narration_id
+        temperature = request.temperature
 
         prompt_tokens = f"/opt/fish-speech/assets/{speaker_name}.npy"
         prompt_text_path = f"/opt/fish-speech/assets/{speaker_name}.txt"
@@ -82,6 +85,7 @@ def generate_semantic_tokens(request: SemanticTokenRequest):
             "--prompt-text", prompt_text,
             "--prompt-tokens", prompt_tokens,
             "--checkpoint-path", "checkpoints/fish-speech-1.5",
+            "--temperature", temperature, 
             "--num-samples", "1",
             "--device", "cuda",
             "--compile",
