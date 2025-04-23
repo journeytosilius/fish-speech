@@ -46,5 +46,6 @@ COPY --from=stage-1 /opt/fish-speech/checkpoints /opt/fish-speech/checkpoints
 ENV GRADIO_SERVER_NAME="0.0.0.0"
 
 EXPOSE 7860
+EXPOSE 8080
 
 CMD ["./entrypoint.sh"]
