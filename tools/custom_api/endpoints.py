@@ -89,7 +89,7 @@ def generate_semantic_tokens(request: SemanticTokenRequest):
             "--half"
         ]
 
-        result = subprocess.run(cmd_generate, capture_output=True, text=True)
+        result = subprocess.run(cmd_generate)
         if result.returncode != 0:
             return {
                 "status": "error",
@@ -107,7 +107,7 @@ def generate_semantic_tokens(request: SemanticTokenRequest):
             "--checkpoint-path", "checkpoints/fish-speech-1.5/firefly-gan-vq-fsq-8x1024-21hz-generator.pth"
         ]
 
-        result_infer = subprocess.run(cmd_infer, capture_output=True, text=True)
+        result_infer = subprocess.run(cmd_infer)
         if result_infer.returncode != 0:
             return {
                 "status": "error",
