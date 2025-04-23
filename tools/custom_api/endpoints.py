@@ -52,7 +52,6 @@ def run_vqgan(request: InferenceRequest):
 #     "fake_file_path": "/opt/fish-speech/assets/adeline.npy"
 # }'
 
-
 class SemanticTokenRequest(BaseModel):
     speaker_name: str
     text_input: str
